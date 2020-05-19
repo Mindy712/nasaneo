@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="gottlieb.nasa.neo.NearEarthObjectViewTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2020-05-19T22:34:49" hostname="Mindys-MacBook-Pro.local" time="0.448">
-  <properties/>
-  <testcase name="paintComponent_withNeoAwayFromMoon" classname="gottlieb.nasa.neo.NearEarthObjectViewTest" time="0.445"/>
-  <testcase name="paintComponent_withNullNeo" classname="gottlieb.nasa.neo.NearEarthObjectViewTest" time="0.003"/>
-  <system-out><![CDATA[]]></system-out>
-  <system-err><![CDATA[]]></system-err>
-</testsuite>
