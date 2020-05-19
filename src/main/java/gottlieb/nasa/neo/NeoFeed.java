@@ -10,7 +10,11 @@ public class NeoFeed {
     @SerializedName("near_earth_objects")
     HashMap<String, List<nearEarthObjects>> nearEarthObjects;
 
-    class nearEarthObjects
+    public nearEarthObjects getFirstObject(String date) {
+        return nearEarthObjects.get(date).get(0);
+    }
+
+    static class nearEarthObjects
     {
         String id;
         String name;
@@ -18,6 +22,25 @@ public class NeoFeed {
         String nasaJplUrl;
         @SerializedName("is_potentially_hazardous_asteroid")
         boolean hazardous;
+        @SerializedName("close_approach_data")
+        List<CloseApproachData> closeApproachData;
+
+        public double closestLunarDistance() {
+            return closeApproachData.get(0).missDistance.lunar;
+        }
+    }
+
+    class CloseApproachData
+    {
+        @SerializedName("close_approach_date")
+        String closeApproachDate;
+        @SerializedName("miss_distance")
+        MissDistance missDistance;
+    }
+
+    class MissDistance
+    {
+        double lunar;
     }
 
 }

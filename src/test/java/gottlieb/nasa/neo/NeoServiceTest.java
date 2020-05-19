@@ -15,11 +15,7 @@ public class NeoServiceTest {
     @Test
     public void getAsteroids() throws IOException {
         //given
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("https://api.nasa.gov/")
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
-        NeoService service = retrofit.create((NeoService.class));
+        NeoService service = new NeoServiceFactory().getInstance();
 
         //when
         NeoFeed feed = service.getAsteroids("2020-04-28", "2020-04-29").execute().body();
@@ -35,6 +31,13 @@ public class NeoServiceTest {
         assertNotNull(nearEarthObjects1.name);
         assertNotNull(nearEarthObjects1.nasaJplUrl);
         assertNotNull(nearEarthObjects1.hazardous);
+        List<NeoFeed.CloseApproachData> closeApproachData = nearEarthObjects1.closeApproachData;
+        assertNotNull(closeApproachData);
+        assertFalse(closeApproachData.isEmpty());
+        NeoFeed.CloseApproachData closeApproachData1 = closeApproachData.get(0);
+        assertNotNull(closeApproachData1.closeApproachDate);
+        assertNotNull(closeApproachData1.missDistance);
+        assertTrue(closeApproachData1.missDistance.lunar > 0);
     }
 
 }
